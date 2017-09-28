@@ -42,7 +42,12 @@ public class BabyMovement : MonoBehaviour
 			float moveHorizontal = Input.GetAxis("Horizontal");
 
 			Vector2 horizontalMovementForce = new Vector2(moveHorizontal * speed, 0);
-            this.rb.AddForce(horizontalMovementForce);
+            if (inMidair) {
+                this.rb.AddForce(horizontalMovementForce / 10f);
+            }
+            else {
+				this.rb.AddForce(horizontalMovementForce);
+			}
 		}
 
 

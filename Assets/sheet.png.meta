@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: 5ba1b94f768a842ab9383aef2b611c04
-timeCreated: 1505350641
+timeCreated: 1507040009
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: ground
+    21300002: sheet_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -101,6 +102,20 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sheet_0
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 112
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

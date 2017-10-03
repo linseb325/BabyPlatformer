@@ -27,7 +27,7 @@ public class BabyMovement : MonoBehaviour
 		this.rb = this.GetComponent<Rigidbody2D>();
         this.anim = this.GetComponent<Animator>();
         this.renderer = this.GetComponent<SpriteRenderer>();
-        this.ragdollDeadBaby.GetComponent<SpriteRenderer>().enabled = false;
+        // (Should already be false) this.ragdollDeadBaby.GetComponent<SpriteRenderer>().enabled = false;
         // (Should already be false) this.ragdollRespawn.GetComponent<SpriteRenderer>().enabled = false;
     }
 
@@ -146,11 +146,11 @@ public class BabyMovement : MonoBehaviour
         else if (collision.gameObject.CompareTag("spikes") && isAlive)
         {
             // Time to die
-            this.ragdollDeadBaby.transform.position = this.transform.position;
+            this.ragdollDeadBaby.transform.position = this.transform.position + new Vector3(0, 2, 0);
 			this.isAlive = false;
             this.renderer.enabled = false;
             this.ragdollDeadBaby.GetComponent<SpriteRenderer>().enabled = true;
-            this.ragdollDeadBaby.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 2800f);
+            this.ragdollDeadBaby.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 2800f));
 
             // Respawn
             Invoke("Respawn", 5);

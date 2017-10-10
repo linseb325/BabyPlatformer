@@ -114,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\BabyMovement.cs" />
+    <Compile Include="Assets\_Scripts\KillsPlayerOnTouch.cs" />
     <Compile Include="Assets\_Scripts\SnakeMovement.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

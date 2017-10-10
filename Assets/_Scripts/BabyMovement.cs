@@ -103,10 +103,6 @@ public class BabyMovement : MonoBehaviour
 		}
 
 
-
-
-
-
     }
 
 
@@ -143,19 +139,20 @@ public class BabyMovement : MonoBehaviour
                 this.anim.SetTrigger("shouldIdle");
             }
         }
-        else if (collision.gameObject.CompareTag("spikes") && isAlive)
-        {
-            // Time to die
-            this.ragdollDeadBaby.transform.position = this.transform.position + new Vector3(0, 2, 0);
-			this.isAlive = false;
-            this.renderer.enabled = false;
-            this.ragdollDeadBaby.GetComponent<SpriteRenderer>().enabled = true;
-            this.ragdollDeadBaby.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 2800f));
-
-            // Respawn
-            Invoke("Respawn", 5);
-        }
     }
+
+    private void Kill()
+    {
+		// Time to die
+		this.ragdollDeadBaby.transform.position = this.transform.position + new Vector3(0, 2, 0);
+		this.isAlive = false;
+		this.renderer.enabled = false;
+		this.ragdollDeadBaby.GetComponent<SpriteRenderer>().enabled = true;
+		this.ragdollDeadBaby.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 2800f));
+
+		// Respawn
+		Invoke("Respawn", 3);
+	}
 
     private void Respawn()
     {

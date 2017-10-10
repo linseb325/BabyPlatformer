@@ -7,9 +7,9 @@ public class SnakeMovement : MonoBehaviour {
     private Rigidbody2D rb;
 
     public float movementSpeed;
+    public GameObject startMarker;
+    public GameObject endMarker;
 
-    public Transform startMarker;
-    public Transform endMarker;
     // public float speed;
     private float startTime;
     private float journeyLength;
@@ -22,21 +22,21 @@ public class SnakeMovement : MonoBehaviour {
     {
         this.rb = this.GetComponent<Rigidbody2D>();
         this.startTime = Time.time;
-        this.journeyLength = Vector3.Distance(endMarker.position, this.transform.position);
-
+        this.journeyLength = Vector3.Distance(endMarker.transform.position, this.transform.position);
+        this.startMarker.GetComponent<SpriteRenderer>().enabled = false;
+        this.endMarker.GetComponent<SpriteRenderer>().enabled = false;
+        print("Disabled sprite renderers");
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        // this.rb.AddForce(Vector2.left * movementSpeed * Time.deltaTime);
-
-        // If we're at the destination, 
-        if (Vector2.Distance(this.transform.position, endMarker.position) < .1f)
+        if (Vector2.Distance(this.transform.position, endMarker.transform.position) < .1f)
         {
-            this.startTime = Time.time;
+			// END OF JOURNEY: Reset start time, swap start/finish markers, and recalculate journey length.
+			this.startTime = Time.time;
             this.swapMarkers();
-            this.journeyLength = Vector3.Distance(endMarker.position, startMarker.position);
+            this.journeyLength = Vector3.Distance(endMarker.transform.position, startMarker.transform.position);
         }
         else {
             this.move();
@@ -47,8 +47,8 @@ public class SnakeMovement : MonoBehaviour {
     private void move()
     {
         float distCovered = (Time.time - startTime) * movementSpeed;
-        float fracJourney = distCovered / journeyLength;
-        this.transform.position = Vector2.Lerp(startMarker.position, endMarker.position, fracJourney);
+        float fracJourneyComplete = distCovered / journeyLength;
+        this.transform.position = Vector2.Lerp(startMarker.transform.position, endMarker.transform.position, fracJourneyComplete);
     }
 
     private void toggleMovementDirection()
@@ -64,7 +64,7 @@ public class SnakeMovement : MonoBehaviour {
 
     private void swapMarkers()
     {
-        Transform temp = startMarker;
+        GameObject temp = startMarker;
         startMarker = endMarker;
         endMarker = temp;
     }

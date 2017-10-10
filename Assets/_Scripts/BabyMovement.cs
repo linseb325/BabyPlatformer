@@ -77,7 +77,7 @@ public class BabyMovement : MonoBehaviour
 				// Show the idle animation if we're not in midair.
 				if (!inMidair)
 				{
-					print("Idle because key is up");
+					// print("Idle because key is up");
 					this.anim.SetTrigger("shouldIdle");
 				}
 				this.rb.velocity = new Vector2(0f, this.rb.velocity.y);
@@ -130,14 +130,17 @@ public class BabyMovement : MonoBehaviour
             // Should we be running when we land, or idle?
             if (isRunning)
             {
-                print("Running because we hit the ground and isRunning == true");
+                // print("Running because we hit the ground and isRunning == true");
                 this.anim.SetTrigger("shouldRun");
             }
             else
             {
-                print("Idle because we hit the ground and isRunning == false");
+                // print("Idle because we hit the ground and isRunning == false");
                 this.anim.SetTrigger("shouldIdle");
             }
+        } else if (collision.gameObject.CompareTag("bottle")) {
+            Destroy(collision.gameObject);
+            print("Picked up a bottle!");
         }
     }
 
@@ -148,9 +151,9 @@ public class BabyMovement : MonoBehaviour
 		this.isAlive = false;
 		this.renderer.enabled = false;
 		this.ragdollDeadBaby.GetComponent<SpriteRenderer>().enabled = true;
-		this.ragdollDeadBaby.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 2800f));
+		this.ragdollDeadBaby.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1500f));
 
-		// Respawn
+		// Respawn 3 seconds after dying
 		Invoke("Respawn", 3);
 	}
 

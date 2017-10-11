@@ -147,11 +147,11 @@ public class BabyMovement : MonoBehaviour
     private void Kill()
     {
 		// Time to die
-		this.ragdollDeadBaby.transform.position = this.transform.position + new Vector3(0, 2, 0);
+        this.ragdollDeadBaby.transform.position = this.transform.position + new Vector3(0, 1.5f, 0);
 		this.isAlive = false;
 		this.renderer.enabled = false;
 		this.ragdollDeadBaby.GetComponent<SpriteRenderer>().enabled = true;
-		this.ragdollDeadBaby.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1500f));
+		this.ragdollDeadBaby.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000f));
 
 		// Respawn 3 seconds after dying
 		Invoke("Respawn", 3);

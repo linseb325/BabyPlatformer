@@ -120,8 +120,6 @@ public class BabyMovement : MonoBehaviour
     // What happens when the baby hits something?
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("Collision!");
-
         // Hitting the ground
         if (collision.gameObject.CompareTag("ground"))
         {
@@ -146,15 +144,18 @@ public class BabyMovement : MonoBehaviour
 
     private void Kill()
     {
-		// Time to die
-        this.ragdollDeadBaby.transform.position = this.transform.position + new Vector3(0, 1.5f, 0);
-		this.isAlive = false;
-		this.renderer.enabled = false;
-		this.ragdollDeadBaby.GetComponent<SpriteRenderer>().enabled = true;
-		this.ragdollDeadBaby.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000f));
+        // Time to die
+        if (isAlive)
+        {
+            this.ragdollDeadBaby.transform.position = this.transform.position + new Vector3(0, 1.5f, 0);
+            this.isAlive = false;
+            this.renderer.enabled = false;
+            this.ragdollDeadBaby.GetComponent<SpriteRenderer>().enabled = true;
+            this.ragdollDeadBaby.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000f));
 
-		// Respawn 3 seconds after dying
-		Invoke("Respawn", 3);
+            // Respawn 3 seconds after dying
+            Invoke("Respawn", 3);
+        }
 	}
 
     private void Respawn()

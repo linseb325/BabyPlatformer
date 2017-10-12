@@ -42,7 +42,13 @@ public class SpawnsBottle : MonoBehaviour {
         float offset = 0.5f * (bottleHeight + floorHeight) + .05f;
         Vector3 floorCenter = this.GetComponent<Collider2D>().bounds.center;
         this.bottle.transform.position = floorCenter + new Vector3(0, offset, 0);
-        this.bottle.gameObject.SetActive(true);
+        this.setBottleStuffActive();
         didSpawn = true;
+    }
+
+    private void setBottleStuffActive()
+    {
+        this.bottle.GetComponent<Collider2D>().enabled = true;
+        this.bottle.GetComponent<SpriteRenderer>().enabled = true;
     }
 }

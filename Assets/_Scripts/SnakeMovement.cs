@@ -25,7 +25,6 @@ public class SnakeMovement : MonoBehaviour {
         this.journeyLength = Vector3.Distance(endMarker.transform.position, this.transform.position);
         this.startMarker.GetComponent<SpriteRenderer>().enabled = false;
         this.endMarker.GetComponent<SpriteRenderer>().enabled = false;
-        print("Disabled sprite renderers");
 	}
 	
 	// Update is called once per frame

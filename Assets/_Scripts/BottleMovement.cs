@@ -46,6 +46,7 @@ public class BottleMovement : MonoBehaviour {
             }
         }
         else if (this.rb.velocity.x < movementSpeed) {
+            // For moving to the right 
             Vector3 moveRight = Vector3.right * 2f;
             this.rb.AddForce(moveRight);
         }

@@ -14,6 +14,9 @@ public class SnakeMovement : MonoBehaviour {
     private float startTime;
     private float journeyLength;
 
+    private bool firstLerp = true;
+    private Vector3 firstLerpStartPos;
+
     private bool moveLeft = false;
 
 
@@ -23,6 +26,7 @@ public class SnakeMovement : MonoBehaviour {
         this.rb = this.GetComponent<Rigidbody2D>();
         this.startTime = Time.time;
         this.journeyLength = Vector3.Distance(endMarker.transform.position, this.transform.position);
+        this.firstLerpStartPos = this.transform.position;
         this.startMarker.GetComponent<SpriteRenderer>().enabled = false;
         this.endMarker.GetComponent<SpriteRenderer>().enabled = false;
 	}
@@ -32,10 +36,15 @@ public class SnakeMovement : MonoBehaviour {
     {
         if (Vector2.Distance(this.transform.position, endMarker.transform.position) < .1f)
         {
-			// END OF JOURNEY: Reset start time, swap start/finish markers, and recalculate journey length.
+            // END OF JOURNEY: Reset start time, swap start/finish markers, and recalculate journey length.
+            this.firstLerp = false;
 			this.startTime = Time.time;
             this.swapMarkers();
             this.journeyLength = Vector3.Distance(endMarker.transform.position, startMarker.transform.position);
+        }
+        else if (firstLerp)
+        {
+            this.moveFirstLerp();
         }
         else {
             this.move();
@@ -48,6 +57,13 @@ public class SnakeMovement : MonoBehaviour {
         float distCovered = (Time.time - startTime) * movementSpeed;
         float fracJourneyComplete = distCovered / journeyLength;
         this.transform.position = Vector2.Lerp(startMarker.transform.position, endMarker.transform.position, fracJourneyComplete);
+    }
+
+    private void moveFirstLerp()
+    {
+        float distCovered = (Time.time - startTime) * movementSpeed;
+        float fracJourneyComplete = distCovered / journeyLength;
+        this.transform.position = Vector2.Lerp(firstLerpStartPos, endMarker.transform.position, fracJourneyComplete);
     }
 
     private void toggleMovementDirection()

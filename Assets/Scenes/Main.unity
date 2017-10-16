@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 84569538}
   - component: {fileID: 84569537}
   m_Layer: 0
-  m_Name: bottle-block
+  m_Name: bottle-block 1
   m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +379,7 @@ Transform:
   m_LocalScale: {x: 4.47212, y: 22.356478, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &404365091
 MonoBehaviour:
@@ -665,7 +665,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4466136087601902, guid: ba193e9218c824cac80c8f02d0358156, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4549199341708530, guid: ba193e9218c824cac80c8f02d0358156, type: 2}
       propertyPath: m_LocalPosition.x
@@ -683,20 +683,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba193e9218c824cac80c8f02d0358156, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &624172088 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4523580853472860, guid: af6c05142f9b9404db51e6cbeaafcb65,
+    type: 2}
+  m_PrefabInternal: {fileID: 777500520}
 --- !u!1001 &777500520
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1112434208}
     m_Modifications:
     - target: {fileID: 4523580853472860, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 59.97
+      value: -2.8629997
       objectReference: {fileID: 0}
     - target: {fileID: 4523580853472860, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.39
+      value: 0.406
       objectReference: {fileID: 0}
     - target: {fileID: 4523580853472860, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
       propertyPath: m_LocalPosition.z
@@ -720,15 +725,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4523580853472860, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4523580853472860, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4523580853472860, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4126400336071564, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
       propertyPath: m_LocalPosition.x
@@ -737,6 +742,10 @@ Prefab:
     - target: {fileID: 4640401832936408, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388750275962296, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
+      propertyPath: m_Name
+      value: bottle-block 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
@@ -782,7 +791,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1388750275962296, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
       propertyPath: m_Name
-      value: bottle-block
+      value: bottle-block 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: af6c05142f9b9404db51e6cbeaafcb65, type: 2}
@@ -858,7 +867,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &958606895
 Rigidbody2D:
@@ -1130,8 +1139,9 @@ Transform:
   - {fileID: 1063651025}
   - {fileID: 1044754558}
   - {fileID: 1158960428}
+  - {fileID: 624172088}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1158960428 stripped
 Transform:
@@ -1223,6 +1233,10 @@ Prefab:
       propertyPath: endMarker
       value: 
       objectReference: {fileID: 2021910867}
+    - target: {fileID: 1149615848941960, guid: ff18b3eae81214cb98523354e843715c, type: 2}
+      propertyPath: m_Name
+      value: bottle-block 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff18b3eae81214cb98523354e843715c, type: 2}
   m_IsPrefabParent: 0
@@ -1263,7 +1277,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4466136087601902, guid: ba193e9218c824cac80c8f02d0358156, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1070621647801656, guid: ba193e9218c824cac80c8f02d0358156, type: 2}
       propertyPath: m_Name
@@ -1388,7 +1402,7 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
+  m_UseAutoMass: 0
   m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
@@ -1688,7 +1702,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2021910867
 GameObject:

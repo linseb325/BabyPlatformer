@@ -10,25 +10,43 @@ public class BabyMovement : MonoBehaviour
     public float maxSpeedX;
     public GameObject ragdollDeadBaby;
     public GameObject ragdollRespawn;
+    public float powerUpSizeIncrease;
 
     Rigidbody2D rb;
     Animator anim;
     SpriteRenderer renderer;
+    Camera mainCamera;
 
     private bool isRunning = false;
     private bool inMidair = false;
     private bool isAlive = true;
 
+    private Vector3 cameraScale;
+    private Vector3 backgroundScale;
+    private Vector3 babyScaleOriginal;
+    private float cameraSizeOriginal;
+
 
     // Use this for initialization
     void Start()
     {
+        this.mainCamera = this.transform.GetChild(0).gameObject.GetComponent<Camera>();
+
 		this.ragdollRespawn.transform.position = this.transform.position;
 		this.rb = this.GetComponent<Rigidbody2D>();
         this.anim = this.GetComponent<Animator>();
         this.renderer = this.GetComponent<SpriteRenderer>();
         // (Should already be false) this.ragdollDeadBaby.GetComponent<SpriteRenderer>().enabled = false;
         // (Should already be false) this.ragdollRespawn.GetComponent<SpriteRenderer>().enabled = false;
+
+        this.cameraSizeOriginal = mainCamera.orthographicSize;
+
+        this.babyScaleOriginal = transform.localScale;
+        this.cameraScale = this.transform.GetChild(0).localScale;
+        this.backgroundScale = this.transform.GetChild(0).GetChild(0).localScale;
+        // print("Camera scale: " + this.cameraScale);
+        // print("Background scale: " + this.backgroundScale);
+
     }
 
 
@@ -81,7 +99,6 @@ public class BabyMovement : MonoBehaviour
 					this.anim.SetTrigger("shouldIdle");
 				}
 				this.rb.velocity = new Vector2(0f, this.rb.velocity.y);
-				//this.rb.angularVelocity = 0f;
 			}
 
 
@@ -106,17 +123,6 @@ public class BabyMovement : MonoBehaviour
     }
 
 
-    void LateUpdate()
-    {
-        
-    }
-
-
-    void FixedUpdate()
-    {
-
-    }
-
     // What happens when the baby hits something?
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -138,6 +144,12 @@ public class BabyMovement : MonoBehaviour
             }
         } else if (collision.gameObject.CompareTag("bottle")) {
             Destroy(collision.gameObject);
+            this.transform.localScale *= powerUpSizeIncrease;
+            // this.transform.GetChild(0).localScale /= powerUpSizeIncrease;
+            this.mainCamera.orthographicSize *= powerUpSizeIncrease;
+            // this.transform.GetChild(0).GetChild(0).localScale *= powerUpSizeIncrease;
+            print("Camera scale: " + this.transform.GetChild(0).localScale);
+            print("Background scale: " + this.transform.GetChild(0).GetChild(0).localScale);
             print("Picked up a bottle!");
         }
     }
@@ -166,6 +178,9 @@ public class BabyMovement : MonoBehaviour
 		this.isAlive = true;
 		this.isRunning = false;
 		this.inMidair = false;
+        this.transform.localScale = this.babyScaleOriginal;
+        this.mainCamera.orthographicSize = cameraSizeOriginal;
+        // TODO: Fix background size/scale
 		this.renderer.enabled = true;
 		this.anim.SetTrigger("shouldIdle");
 

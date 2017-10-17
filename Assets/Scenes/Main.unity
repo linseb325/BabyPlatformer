@@ -1108,7 +1108,7 @@ Transform:
   m_Children:
   - {fileID: 1870911871}
   m_Father: {fileID: 1267103937}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1112434207
 GameObject:
@@ -1387,8 +1387,8 @@ Transform:
   m_LocalPosition: {x: -6.64, y: 0.49, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children:
-  - {fileID: 1563344917}
   - {fileID: 1100360177}
+  - {fileID: 1563344917}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1453,6 +1453,7 @@ MonoBehaviour:
   maxSpeedX: 10
   ragdollDeadBaby: {fileID: 958606892}
   ragdollRespawn: {fileID: 1918564721}
+  powerUpSizeIncrease: 1.5
 --- !u!1 &1563344916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,7 +1481,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1267103937}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1563344918
 AudioSource:
